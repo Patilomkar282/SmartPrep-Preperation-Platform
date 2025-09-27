@@ -1,8 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { ArrowRight, Brain, Code, Target } from 'lucide-react';
 
 export default function Preperation() {
+  const navigate = useNavigate();
+
   const preparationCards = [
     {
       id: 'aptitude',
@@ -16,7 +18,7 @@ export default function Preperation() {
     },
     {
       id: 'coresub',
-      title: 'Core Subject Preperation',
+      title: 'Core Subject Preparation',
       description:
         'Strengthen your core computer science subjects with in-depth concepts and practical examples.',
       icon: Target,
@@ -39,7 +41,7 @@ export default function Preperation() {
   return (
     <div className="w-full min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50/30 py-16 px-4 sm:px-6 lg:px-8">
       <div className="w-full max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header Section */}
+        {/* Header */}
         <div className="text-center mb-16">
           <div className="inline-block p-2 bg-gradient-to-r from-blue-100 to-indigo-100 rounded-full mb-6">
             <div className="w-16 h-16 bg-gradient-to-r from-blue-600 to-indigo-700 rounded-full flex items-center justify-center">
@@ -58,18 +60,18 @@ export default function Preperation() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {preparationCards.map((card, index) => {
             const IconComponent = card.icon;
+
             return (
               <div
                 key={card.id}
-                className="group relative"
-                style={{
-                  animationDelay: `${index * 150}ms`,
-                }}
+                className="group relative cursor-pointer"
+                onClick={() => navigate(card.route)} // navigate when the card is clicked
               >
                 <div className="relative h-full bg-white rounded-3xl shadow-lg shadow-slate-200/50 border border-slate-200/60 overflow-hidden transition-all duration-500 hover:shadow-2xl hover:shadow-slate-300/30 hover:-translate-y-2">
+                  
                   {/* Gradient Background */}
                   <div
-                    className={`absolute inset-0 bg-gradient-to-br ${card.gradient} opacity-0 group-hover:opacity-5 transition-all duration-500`}
+                    className={`absolute inset-0 bg-gradient-to-br ${card.gradient} opacity-0 group-hover:opacity-5 transition-all duration-500 pointer-events-none`}
                   />
 
                   {/* Card Content */}
@@ -94,21 +96,23 @@ export default function Preperation() {
                     </p>
 
                     {/* Explore Button */}
-                    <Link
-                        to={card.route}
-                        className={`mt-auto w-full bg-gradient-to-r ${card.gradient} ${card.hoverGradient} text-white rounded-xl py-3 px-6 font-semibold text-base transition-all duration-300 cursor-pointer flex items-center justify-center gap-2 hover:scale-105 group-hover:shadow-lg`}
-                        >
-                        <span className="flex items-center gap-2">
-                            Explore
-                            <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
-                        </span>
-                    </Link>
-              
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation(); // prevent card click from triggering
+                        navigate(card.route);
+                      }}
+                      className={`mt-auto w-full bg-gradient-to-r ${card.gradient} ${card.hoverGradient} text-white rounded-xl py-3 px-6 font-semibold text-base transition-all duration-300 cursor-pointer flex items-center justify-center gap-2 hover:scale-105 group-hover:shadow-lg`}
+                    >
+                      <span className="flex items-center gap-2">
+                        Explore
+                        <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
+                      </span>
+                    </button>
                   </div>
 
                   {/* Subtle border gradient on hover */}
                   <div
-                    className={`absolute inset-0 rounded-3xl bg-gradient-to-r ${card.gradient} p-[1px] opacity-0 group-hover:opacity-20 transition-all duration-500`}
+                    className={`absolute inset-0 rounded-3xl bg-gradient-to-r ${card.gradient} p-[1px] opacity-0 group-hover:opacity-20 transition-all duration-500 pointer-events-none`}
                   >
                     <div className="w-full h-full bg-white rounded-3xl" />
                   </div>

@@ -1,7 +1,10 @@
 
-import React from 'react';
+import React, { useState } from 'react';
+import AptiQuiz from './AptiQuiz'; // Assuming AptiQuiz component exists in the same directory
 
 const AptitudeSection = () => {
+  const [activeQuiz, setActiveQuiz] = useState(null); // 'logical', 'verbal', 'quantitative', or null
+
   const sections = [
     {
       id: 'logical',
@@ -54,10 +57,16 @@ const AptitudeSection = () => {
   ];
 
   const handleStartTest = (sectionId) => {
-    console.log(`Starting ${sectionId} test`);
-    // Navigate to QuizComponent - placeholder implementation
-    // In a real app, you'd use React Router or similar
+    setActiveQuiz(sectionId);
   };
+  
+  const handleBackToSections = () => {
+    setActiveQuiz(null);
+  };
+
+  if (activeQuiz) {
+    return <AptiQuiz sectionId={activeQuiz} onBack={handleBackToSections} />;
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-100 py-12 px-4 sm:px-6 lg:px-8">
