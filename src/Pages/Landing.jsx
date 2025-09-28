@@ -24,9 +24,15 @@ import {
 const services = [
     {
       icon: "🧠",
-      title: "AI Learning Modules",
-      description: "Aptitude, coding, and technical interview preparation powered by artificial intelligence",
+      title: "Learning Modules",
+      description: "Aptitude, coding, and technical interview preparation",
       gradient: "from-blue-500 to-cyan-500"
+    },
+     {
+      icon: "🚀",
+      title: "AI-Powered Mock Interview",
+      description: "Real-time voice interaction with instant feedback and performance analysis",
+      gradient: "from-teal-500 to-blue-500"
     },
     {
       icon: "👥",
@@ -51,12 +57,6 @@ const services = [
       title: "Resume Analysis",
       description: "AI-powered resume optimization and job matching algorithms",
       gradient: "from-indigo-500 to-purple-500"
-    },
-    {
-      icon: "🚀",
-      title: "Automated Scheduling",
-      description: "Smart scheduling for mentorship sessions and webinar bookings",
-      gradient: "from-teal-500 to-blue-500"
     }
   ];
  const problems = [
@@ -68,7 +68,7 @@ const services = [
   ];
 
   const solutions = [
-    "AI-powered personalized learning paths",
+    "One-stop all preparation platform",
     "Direct access to successful alumni",
     "Daily updated job opportunities",
     "Mock interviews with real-time feedback",
@@ -113,7 +113,7 @@ const successStories = [
     name: "Priya Sharma",
     company: "Google",
     package: "₹45 LPA",
-    image: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face",
+    image: "https://tse3.mm.bing.net/th/id/OIP.NoOQYURE3acObe_4KNHmOQHaHa?pid=Api&P=0&h=180",
     quote: "SmartPrep's mock interviews prepared me for the real Google interview. The AI feedback was incredibly detailed!"
   },
   {
@@ -567,33 +567,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-      {/* Stats Section */}
-      <section className="py-20 bg-gray-900 text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-4 gap-8 text-center">
-            {[
-              { number: '10,000+', label: 'Students Placed', icon: Users },
-              { number: '500+', label: 'Partner Companies', icon: Briefcase },
-              { number: '95%', label: 'Success Rate', icon: Award },
-              { number: '24/7', label: 'Support Available', icon: Shield }
-            ].map((stat, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                viewport={{ once: true }}
-              >
-                <div className="mb-4">
-                  <stat.icon className="w-8 h-8 mx-auto text-blue-400 mb-2" />
-                  <div className="text-4xl font-bold mb-2">{stat.number}</div>
-                  <div className="text-gray-300">{stat.label}</div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+    
 
 
       {/* Success Stories */}
@@ -645,6 +619,33 @@ export default function Home() {
                   {[...Array(5)].map((_, i) => (
                     <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
                   ))}
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+        {/* Stats Section */}
+      <section className="py-20 bg-gray-900 text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid md:grid-cols-4 gap-8 text-center">
+            {[
+              { number: '10,000+', label: 'Students Placed', icon: Users },
+              { number: '500+', label: 'Partner Companies', icon: Briefcase },
+              { number: '95%', label: 'Success Rate', icon: Award },
+              { number: '24/7', label: 'Support Available', icon: Shield }
+            ].map((stat, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                viewport={{ once: true }}
+              >
+                <div className="mb-4">
+                  <stat.icon className="w-8 h-8 mx-auto text-blue-400 mb-2" />
+                  <div className="text-4xl font-bold mb-2">{stat.number}</div>
+                  <div className="text-gray-300">{stat.label}</div>
                 </div>
               </motion.div>
             ))}

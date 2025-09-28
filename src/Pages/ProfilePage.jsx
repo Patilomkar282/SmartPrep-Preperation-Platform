@@ -489,9 +489,9 @@ export default function ProfilePage() {
   const [copiedLink, setCopiedLink] = useState(null)
 
   const [userData, setUserData] = useState({
-    fullName: "Shrutika Hibare",
-    email: "shrutikahibare@example.com",
-    avatarUrl: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1887&auto=format&fit=crop",
+    fullName: "Alex Johnson",
+    email: "alex@university.edu",
+    avatarUrl: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face",
     phone: "+91 85789074598",
     passing_year: "2026",
     current_class:"TE",

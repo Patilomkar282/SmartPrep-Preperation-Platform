@@ -1,33 +1,35 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const CoreSubjects = () => {
+  const navigate = useNavigate();
+
   const subjects = [
     {
       id: 'oop',
       title: 'Object-Oriented Programming',
       description: 'Master classes, inheritance, polymorphism, and design patterns. Essential for technical interviews at top tech companies and fundamental to modern software development.',
-      link: 'https://www.geeksforgeeks.org/interview-prep/oops-interview-questions/'
+      route: '/ooplearning'
     },
     {
       id: 'dbms',
       title: 'Database Management Systems',
       description: 'Learn SQL, normalization, indexing, and transaction management. Critical for backend roles and frequently tested in technical rounds across all major companies.',
-      link: 'https://www.geeksforgeeks.org/dbms/commonly-asked-dbms-interview-questions/'
+      route: '/dbmslearning'
     },
     {
       id: 'os',
       title: 'Operating Systems',
-      description: 'Understand processes, threads, memory management,Schenduling Algorithms, IPC and file systems. Core knowledge for system programming roles and popular in technical interviews.',
-      link: 'https://www.geeksforgeeks.org/operating-systems/operating-systems-interview-questions/'
+      description: 'Understand processes, threads, memory management, Scheduling Algorithms, IPC and file systems. Core knowledge for system programming roles and popular in technical interviews.',
+      route: '/oslearning'
     },
     {
       id: 'cn',
       title: 'Computer Networks',
       description: 'Grasp protocols, network layers, and distributed systems concepts. Vital for full-stack development and increasingly important in cloud-native applications.',
-      link: 'https://www.geeksforgeeks.org/blogs/networking-interview-questions/'
+      route: '/cnlearning'
     }
   ];
-
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 py-16 px-4 sm:px-6 lg:px-8">
@@ -53,9 +55,7 @@ const CoreSubjects = () => {
           {subjects.map((subject, index) => (
             <div
               key={subject.id}
-              className={`group relative bg-white rounded-3xl p-8 shadow-sm hover:shadow-2xl hover:shadow-blue-100/50 transition-all duration-500 transform hover:-translate-y-2 border border-gray-100/50 backdrop-blur-sm ${
-                index === 0 ? 'md:col-span-1 xl:col-span-1' : ''
-              }`}
+              className={`group relative bg-white rounded-3xl p-8 shadow-sm hover:shadow-2xl hover:shadow-blue-100/50 transition-all duration-500 transform hover:-translate-y-2 border border-gray-100/50 backdrop-blur-sm`}
               style={{
                 animationDelay: `${index * 150}ms`,
                 animation: 'fadeInUp 0.6s ease-out forwards'
@@ -63,10 +63,10 @@ const CoreSubjects = () => {
             >
               {/* Gradient overlay */}
               <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 to-indigo-50/30 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              
+
               {/* Content */}
               <div className="relative z-10">
-                {/* Icon based on subject */}
+                {/* Icon */}
                 <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-6 transition-all duration-300 group-hover:scale-110 ${
                   subject.id === 'oop' ? 'bg-gradient-to-r from-purple-500 to-purple-600' :
                   subject.id === 'dbms' ? 'bg-gradient-to-r from-green-500 to-emerald-600' :
@@ -106,8 +106,8 @@ const CoreSubjects = () => {
                 </p>
 
                 {/* Button */}
-                <a
-                  href={subject.link}
+                <button
+                  onClick={() => navigate(subject.route)}
                   className={`inline-flex items-center justify-center w-full px-6 py-3.5 text-white font-semibold rounded-2xl transition-all duration-300 transform hover:scale-105 active:scale-95 ${
                     subject.id === 'oop' ? 'bg-gradient-to-r from-purple-500 to-purple-600 hover:from-purple-600 hover:to-purple-700 shadow-lg shadow-purple-500/25' :
                     subject.id === 'dbms' ? 'bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 shadow-lg shadow-green-500/25' :
@@ -119,7 +119,7 @@ const CoreSubjects = () => {
                   <svg className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>
-                </a>
+                </button>
               </div>
             </div>
           ))}

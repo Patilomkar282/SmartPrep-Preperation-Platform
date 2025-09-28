@@ -1,9 +1,10 @@
-
 import React, { useState } from 'react';
-import AptiQuiz from './AptiQuiz'; // Assuming AptiQuiz component exists in the same directory
+import { useNavigate } from 'react-router-dom';
+import AptiQuiz from './AptiQuiz'; // Assuming AptiQuiz component exists
 
 const AptitudeSection = () => {
   const [activeQuiz, setActiveQuiz] = useState(null); // 'logical', 'verbal', 'quantitative', or null
+  const navigate = useNavigate();
 
   const sections = [
     {
@@ -20,7 +21,8 @@ const AptitudeSection = () => {
       gradientHeader: 'from-blue-600 via-blue-500 to-cyan-400',
       backgroundStyle: 'bg-gradient-to-br from-blue-50/50 to-cyan-50/30',
       buttonGradient: 'from-blue-600 to-cyan-500',
-      buttonHover: 'hover:from-blue-700 hover:to-cyan-600'
+      buttonHover: 'hover:from-blue-700 hover:to-cyan-600',
+      prepareRoute: '/logical'
     },
     {
       id: 'verbal',
@@ -36,7 +38,8 @@ const AptitudeSection = () => {
       gradientHeader: 'from-purple-600 via-purple-500 to-pink-400',
       backgroundStyle: 'bg-gradient-to-br from-purple-50/50 to-pink-50/30',
       buttonGradient: 'from-purple-600 to-pink-500',
-      buttonHover: 'hover:from-purple-700 hover:to-pink-600'
+      buttonHover: 'hover:from-purple-700 hover:to-pink-600',
+      prepareRoute: '/verbal'
     },
     {
       id: 'quantitative',
@@ -52,7 +55,8 @@ const AptitudeSection = () => {
       gradientHeader: 'from-emerald-600 via-green-500 to-teal-400',
       backgroundStyle: 'bg-gradient-to-br from-emerald-50/50 to-teal-50/30',
       buttonGradient: 'from-emerald-600 to-teal-500',
-      buttonHover: 'hover:from-emerald-700 hover:to-teal-600'
+      buttonHover: 'hover:from-emerald-700 hover:to-teal-600',
+      prepareRoute: '/quant'
     }
   ];
 
@@ -74,7 +78,7 @@ const AptitudeSection = () => {
         {/* Main Header */}
         <div className="text-center mb-16">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 tracking-tight">
-            Aptitude Assessment
+            Aptitude Preparation
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
             Challenge yourself across three core areas of cognitive ability. 
@@ -84,7 +88,7 @@ const AptitudeSection = () => {
 
         {/* Sections Grid */}
         <div className="grid lg:grid-cols-3 gap-8 lg:gap-6">
-          {sections.map((section, index) => (
+          {sections.map((section) => (
             <div
               key={section.id}
               className={`group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 ${section.backgroundStyle} border border-white/20`}
@@ -98,18 +102,15 @@ const AptitudeSection = () => {
                   </h2>
                   <div className="w-12 h-1 bg-white/30 rounded-full"></div>
                 </div>
-                {/* Decorative Element */}
                 <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -translate-y-16 translate-x-16"></div>
               </div>
 
               {/* Content */}
               <div className="px-8 py-8">
-                {/* Description */}
                 <p className="text-gray-700 text-lg leading-relaxed mb-8 font-medium">
                   {section.description}
                 </p>
 
-                {/* Subtopics */}
                 <div className="mb-8">
                   <h3 className="text-gray-900 font-semibold text-lg mb-4">
                     Key Areas Covered:
@@ -124,42 +125,35 @@ const AptitudeSection = () => {
                   </ul>
                 </div>
 
-                                    {/* Action Buttons */}
-                    <div className="flex flex-col sm:flex-row gap-4">
-                      {/* Prepare Button */}
-                      <button
-                        onClick={() => alert(`Prepare mode for ${section.title} coming soon!`)}
-                        className={`flex-1 bg-white text-${section.gradientHeader.includes('blue') ? 'blue-600' : section.gradientHeader.includes('purple') ? 'purple-600' : 'emerald-600'} font-semibold py-4 px-6 rounded-xl border border-gray-300 shadow hover:shadow-md transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-opacity-30 text-lg tracking-wide`}
+                <div className="flex flex-col sm:flex-row gap-4">
+                  {/* Prepare Button */}
+                  <button
+                    onClick={() => navigate(section.prepareRoute)}
+                    className={`flex-1 bg-white text-${section.gradientHeader.includes('blue') ? 'blue-600' : section.gradientHeader.includes('purple') ? 'purple-600' : 'emerald-600'} font-semibold py-4 px-6 rounded-xl border border-gray-300 shadow hover:shadow-md transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-opacity-30 text-lg tracking-wide`}
+                  >
+                    Prepare
+                  </button>
+
+                  {/* Start Assessment Button */}
+                  <button
+                    onClick={() => handleStartTest(section.id)}
+                    className={`flex-1 bg-gradient-to-r ${section.buttonGradient} ${section.buttonHover} text-white font-semibold py-4 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-opacity-30 text-lg tracking-wide`}
+                  >
+                    <span className="flex items-center justify-center">
+                      Start Assessment
+                      <svg 
+                        className="ml-2 w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300" 
+                        fill="none" 
+                        stroke="currentColor" 
+                        viewBox="0 0 24 24"
                       >
-                        Prepare
-                      </button>
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                      </svg>
+                    </span>
+                  </button>
+                </div>
+              </div>
 
-                      {/* Start Assessment Button */}
-                      <button
-                        onClick={() => handleStartTest(section.id)}
-                        className={`flex-1 bg-gradient-to-r ${section.buttonGradient} ${section.buttonHover} text-white font-semibold py-4 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-opacity-30 text-lg tracking-wide`}
-                        style={{ 
-                          focusRingColor: section.gradientHeader.includes('blue') ? '#3B82F6' : 
-                                        section.gradientHeader.includes('purple') ? '#8B5CF6' : '#10B981' 
-                        }}
-                      >
-                        <span className="flex items-center justify-center">
-                          Start Assessment
-                          <svg 
-                            className="ml-2 w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300" 
-                            fill="none" 
-                            stroke="currentColor" 
-                            viewBox="0 0 24 24"
-                          >
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                          </svg>
-                        </span>
-                      </button>
-                    </div>
-
-                                  </div>
-
-              {/* Subtle Border Accent */}
               <div className={`absolute inset-0 rounded-2xl bg-gradient-to-r ${section.gradientHeader} opacity-0 group-hover:opacity-10 transition-opacity duration-500 pointer-events-none`}></div>
             </div>
           ))}

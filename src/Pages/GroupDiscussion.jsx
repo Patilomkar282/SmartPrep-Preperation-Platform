@@ -101,7 +101,7 @@ const GroupDiscussions = () => {
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Stats Section */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+        <div className="grid ml-80 grid-cols-1 md:grid-cols-3 gap-6 mb-12">
           <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-100">
             <div className="flex items-center">
               <div className="bg-blue-100 p-3 rounded-xl">
@@ -114,20 +114,7 @@ const GroupDiscussions = () => {
             </div>
           </div>
           
-          <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-100">
-            <div className="flex items-center">
-              <div className="bg-green-100 p-3 rounded-xl">
-                <Users className="h-6 w-6 text-green-600" />
-              </div>
-              <div className="ml-4">
-                <p className="text-sm text-slate-600">Total Participants</p>
-                <p className="text-2xl font-bold text-slate-900">
-                  {discussions.reduce((sum, disc) => sum + disc.participants, 0)}
-                </p>
-              </div>
-            </div>
-          </div>
-
+        
           <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-100">
             <div className="flex items-center">
               <div className="bg-purple-100 p-3 rounded-xl">

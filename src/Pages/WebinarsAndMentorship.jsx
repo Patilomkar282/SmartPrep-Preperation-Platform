@@ -390,9 +390,8 @@ const WebinarsAndMentorship = () => {
                     <p className="text-sm text-slate-600 mb-4"><strong>Hosted by:</strong> {webinar.host}</p>
                     <p className="text-slate-600 text-base">{webinar.description}</p>
                   </div>
-                  <div className="flex-shrink-0 flex md:flex-col items-center md:items-end justify-start gap-3">
+                  <div className="flex-shrink-0 flex md:flex-col items-center md:items-end justify-center gap-3">
                     <button onClick={() => setSelectedWebinar(webinar)} className="w-full md:w-auto px-5 py-2.5 bg-white text-blue-600 font-semibold rounded-md border border-blue-600 hover:bg-blue-50 transition-all">View Details</button>
-                    <button className="w-full md:w-auto px-5 py-2.5 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700 transition-all">Enroll Now</button>
                   </div>
                 </div>
               </div>

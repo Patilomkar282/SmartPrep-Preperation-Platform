@@ -8,7 +8,7 @@ export default function Preperation() {
   const preparationCards = [
     {
       id: 'aptitude',
-      title: 'Aptitude Test',
+      title: 'Aptitude ',
       description:
         'Master logical reasoning, quantitative aptitude, and verbal skills with comprehensive practice tests.',
       icon: Brain,
@@ -18,7 +18,7 @@ export default function Preperation() {
     },
     {
       id: 'coresub',
-      title: 'Core Subject Preparation',
+      title: 'Core Subjects ',
       description:
         'Strengthen your core computer science subjects with in-depth concepts and practical examples.',
       icon: Target,
@@ -28,7 +28,7 @@ export default function Preperation() {
     },
     {
       id: 'dsa',
-      title: 'DSA Prep',
+      title: 'Data Structure & Algorithms',
       description:
         'Excel in Data Structures and Algorithms with curated problems and detailed solutions.',
       icon: Code,

@@ -12,6 +12,14 @@ import JobBoard from './Pages/JobBoard.jsx';
 import GroupDiscussions from './Pages/GroupDiscussion.jsx';
 import WebinarsAndMentorship from './Pages/WebinarsAndMentorship.jsx';
 import Layout from './Layout.jsx';
+import OopLearningPage from './Components/OopLearningPage.jsx';
+import CnLearningPage from './Components/CnLearning.jsx';
+import DbmsLearningPage from './Components/DbmsLearning.jsx';
+import OsLearningPage from './Components/OsLearning.jsx';
+import QuantitativeAptitudePage from './Components/QuantLearning.jsx';
+import VerbalAbilityPage from './Components/VerbalAbilityLearning.jsx';
+import LogicalReasoningPage from './Components/LogicalReasoningLearning.jsx';
+
 
 
 function App() {
@@ -29,6 +37,14 @@ function App() {
           <Route path='job-board' element={<JobBoard />} />
           <Route path='group-discussion' element={<GroupDiscussions />} />
           <Route path='webinar-mentorship' element={<WebinarsAndMentorship />} />
+          <Route path='ooplearning' element={<OopLearningPage/>}/>
+          <Route path='cnlearning' element={<CnLearningPage/>}/>
+          <Route path='oslearning' element={<OsLearningPage/>}/>
+          <Route path='dbmslearning' element={<DbmsLearningPage/>}/>
+
+          <Route path='quant' element={<QuantitativeAptitudePage/>}/>
+          <Route path='verbal' element={<VerbalAbilityPage/>}/>
+          <Route path='logical' element={<LogicalReasoningPage/>}/>
         </Route>
         
 

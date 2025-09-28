@@ -12,10 +12,13 @@ import {
   MessageCircle,
   Mic
 } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+
 
 export default function Header() {
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const [scrollY, setScrollY] = useState(0);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
@@ -49,10 +52,11 @@ export default function Header() {
       animate={{ y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
     >
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto ">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <motion.div 
+            onClick={() => navigate("/")} 
             className="flex items-center space-x-3"
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.2 }}
@@ -60,7 +64,7 @@ export default function Header() {
             <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-xl flex items-center justify-center">
               <span className="text-white font-bold text-xl">S</span>
             </div>
-            <h1 className="text-2xl font-bold text-white">SmartPrep</h1>
+            <h1 className="text-2xl font-bold text-white mr-30">SmartPrep</h1>
           </motion.div>
 
           {/* Navigation */}
@@ -82,79 +86,23 @@ export default function Header() {
           </nav>
 
           {/* Profile */}
-          <div className="relative">
-            <motion.button
-              onClick={() => setIsProfileOpen(!isProfileOpen)}
-              className="flex items-center space-x-3 p-2 rounded-xl hover:bg-gray-800 transition-colors duration-200"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <img
-                src={user.avatar}
-                alt={user.name}
-                className="w-10 h-10 rounded-full object-cover ring-2 ring-blue-500/30"
-              />
-              <div className="hidden md:block text-left">
-                <p className="text-sm font-semibold text-white">{user.name}</p>
-                <p className="text-xs text-gray-400">{user.email}</p>
-              </div>
-              <ChevronDown 
-                className={`w-4 h-4 text-gray-400 transition-transform duration-200 ${
-                  isProfileOpen ? 'rotate-180' : ''
-                }`} 
-              />
-            </motion.button>
-
-            {/* Profile Dropdown */}
-            <AnimatePresence>
-              {isProfileOpen && (
-                <motion.div
-                  initial={{ opacity: 0, y: 10, scale: 0.95 }}
-                  animate={{ opacity: 1, y: 0, scale: 1 }}
-                  exit={{ opacity: 0, y: 10, scale: 0.95 }}
-                  transition={{ duration: 0.2 }}
-                  className="absolute right-0 mt-2 w-64 bg-white rounded-2xl shadow-2xl border border-gray-200 overflow-hidden"
-                >
-                  <div className="p-4 bg-gradient-to-r from-blue-50 to-purple-50 border-b">
-                    <div className="flex items-center space-x-3">
-                      <img
-                        src={user.avatar}
-                        alt={user.name}
-                        className="w-12 h-12 rounded-full object-cover"
-                      />
-                      <div>
-                        <p className="font-semibold text-gray-900">{user.name}</p>
-                        <p className="text-sm text-gray-600">{user.email}</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="p-2">
-                    <motion.button
-                      whileHover={{ backgroundColor: "#f3f4f6" }}
-                      className="w-full flex items-center space-x-3 px-4 py-3 text-left rounded-xl transition-colors"
-                    >
-                      <User className="w-5 h-5 text-gray-500" />
-                      <span className="text-gray-700">Profile Settings</span>
-                    </motion.button>
-                    <motion.button
-                      whileHover={{ backgroundColor: "#f3f4f6" }}
-                      className="w-full flex items-center space-x-3 px-4 py-3 text-left rounded-xl transition-colors"
-                    >
-                      <Settings className="w-5 h-5 text-gray-500" />
-                      <span className="text-gray-700">Account Settings</span>
-                    </motion.button>
-                    <motion.button
-                      whileHover={{ backgroundColor: "#fef2f2" }}
-                      className="w-full flex items-center space-x-3 px-4 py-3 text-left rounded-xl transition-colors"
-                    >
-                      <LogOut className="w-5 h-5 text-red-500" />
-                      <span className="text-red-600">Sign Out</span>
-                    </motion.button>
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
+          <motion.button
+  onClick={() => navigate("/profile")} // <-- Go to /profile directly
+  className="flex items-center space-x-3 p-2 rounded-xl hover:bg-gray-800 transition-colors duration-200"
+  whileHover={{ scale: 1.05 }}
+  whileTap={{ scale: 0.95 }}
+>
+  <img
+    src={user.avatar}
+    alt={user.name}
+    className="w-10 h-10 rounded-full object-cover ring-2 ring-blue-500/30"
+  />
+  <div className="hidden md:block text-left">
+    <p className="text-sm font-semibold text-white">{user.name}</p>
+    <p className="text-xs text-gray-400">{user.email}</p>
+  </div>
+  <ChevronDown className="w-4 h-4 text-gray-400" />
+</motion.button>
         </div>
       </div>
     </motion.header>
