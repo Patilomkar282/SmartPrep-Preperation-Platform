@@ -2,24 +2,37 @@ import React from 'react';
 import './App.css';
 import ProfilePage from './Pages/ProfilePage';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import LandingPage from './Pages/LandingPage.jsx';
+import LandingPage from './Pages/Landing.jsx';
 import Preperation from './Pages/Preperation.jsx'; 
 import CoreSubjects from './Components/CoreSubjects.jsx';
 import AptitudeSection from './Components/Aptitudesection.jsx';
 import AptiQuiz from './Components/AptiQuiz.jsx';
 import DSASection from './Components/DSASection.jsx';
+import JobBoard from './Pages/JobBoard.jsx';
+import GroupDiscussions from './Pages/GroupDiscussion.jsx';
+import WebinarsAndMentorship from './Pages/WebinarsAndMentorship.jsx';
+import Layout from './Layout.jsx';
+
 
 function App() {
   return (
     <Router>
       <Routes>
-        <Route path='/' element={<LandingPage />} />
-        <Route path='/preperation' element={<Preperation />} /> {/* keep as is if your component is Preperation */}
-        <Route path='/coresub' element={<CoreSubjects />} />
-        <Route path='/aptitude' element={<AptitudeSection />} />
-        <Route path='/profile' element={<ProfilePage />} />
-        <Route path='/quiz/:sectionId' element={<AptiQuiz />} />
-        <Route path='/dsa' element={<DSASection />} />
+        <Route path='/' element={<Layout />}>
+          <Route path='/' element={<LandingPage />} />
+          <Route path='learning-modules' element={<Preperation />} /> {/* keep as is if your component is Preperation */}
+          <Route path='coresub' element={<CoreSubjects />} />
+          <Route path='aptitude' element={<AptitudeSection />} />
+          <Route path='profile' element={<ProfilePage />} />
+          <Route path='quiz/:sectionId' element={<AptiQuiz />} />
+          <Route path='dsa' element={<DSASection />} />
+          <Route path='job-board' element={<JobBoard />} />
+          <Route path='group-discussion' element={<GroupDiscussions />} />
+          <Route path='webinar-mentorship' element={<WebinarsAndMentorship />} />
+        </Route>
+        
+
+
 
       </Routes>
     </Router>

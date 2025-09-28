@@ -124,28 +124,40 @@ const AptitudeSection = () => {
                   </ul>
                 </div>
 
-                {/* Start Test Button */}
-                <button
-                  onClick={() => handleStartTest(section.id)}
-                  className={`w-full bg-gradient-to-r ${section.buttonGradient} ${section.buttonHover} text-white font-semibold py-4 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-opacity-30 text-lg tracking-wide`}
-                  style={{ 
-                    focusRingColor: section.gradientHeader.includes('blue') ? '#3B82F6' : 
-                                   section.gradientHeader.includes('purple') ? '#8B5CF6' : '#10B981' 
-                  }}
-                >
-                  <span className="flex items-center justify-center">
-                    Start Assessment
-                    <svg 
-                      className="ml-2 w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300" 
-                      fill="none" 
-                      stroke="currentColor" 
-                      viewBox="0 0 24 24"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                    </svg>
-                  </span>
-                </button>
-              </div>
+                                    {/* Action Buttons */}
+                    <div className="flex flex-col sm:flex-row gap-4">
+                      {/* Prepare Button */}
+                      <button
+                        onClick={() => alert(`Prepare mode for ${section.title} coming soon!`)}
+                        className={`flex-1 bg-white text-${section.gradientHeader.includes('blue') ? 'blue-600' : section.gradientHeader.includes('purple') ? 'purple-600' : 'emerald-600'} font-semibold py-4 px-6 rounded-xl border border-gray-300 shadow hover:shadow-md transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-opacity-30 text-lg tracking-wide`}
+                      >
+                        Prepare
+                      </button>
+
+                      {/* Start Assessment Button */}
+                      <button
+                        onClick={() => handleStartTest(section.id)}
+                        className={`flex-1 bg-gradient-to-r ${section.buttonGradient} ${section.buttonHover} text-white font-semibold py-4 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-opacity-30 text-lg tracking-wide`}
+                        style={{ 
+                          focusRingColor: section.gradientHeader.includes('blue') ? '#3B82F6' : 
+                                        section.gradientHeader.includes('purple') ? '#8B5CF6' : '#10B981' 
+                        }}
+                      >
+                        <span className="flex items-center justify-center">
+                          Start Assessment
+                          <svg 
+                            className="ml-2 w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300" 
+                            fill="none" 
+                            stroke="currentColor" 
+                            viewBox="0 0 24 24"
+                          >
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                          </svg>
+                        </span>
+                      </button>
+                    </div>
+
+                                  </div>
 
               {/* Subtle Border Accent */}
               <div className={`absolute inset-0 rounded-2xl bg-gradient-to-r ${section.gradientHeader} opacity-0 group-hover:opacity-10 transition-opacity duration-500 pointer-events-none`}></div>
